@@ -10,13 +10,16 @@ int main()
     int i, j;
     int row, col;
 
-    row = 6;
-    col = 6;
+    printf("\nEnter No. of Rows : ");
+    scanf("%d",&row);
+    printf("\nEnter No. of Columns : ");
+    scanf("%d",&col);
+
     mat = (int **)malloc(row * sizeof(int *));
     for (i = 0; i < row; i++)
         *(mat + i) = (int *)malloc(col * sizeof(int));
 
-    getData(mat, row, col);
+    getSparse(mat, row, col);
     display(mat, row, col);
 
     int N = countNonZero(mat, row, col);
@@ -71,7 +74,6 @@ void createSpareseTranspose(int **sparseMat, int row)
             }
 
     printf("\nThe Transpose of the Matrix is :\n");
-
     display(sparseTanspose, N + 1, 3);
 }
 

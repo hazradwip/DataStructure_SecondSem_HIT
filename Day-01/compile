@@ -1,1 +1,5 @@
-gcc -o main sparseMat.c matrix.c
+problem 1 :
+    gcc -o main sparseMat.c matrix.c
+
+problem 2 :
+    gcc -o main checkMat.c matrix.c
