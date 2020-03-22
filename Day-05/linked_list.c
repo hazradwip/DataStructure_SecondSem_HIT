@@ -1,5 +1,31 @@
 #include "linked_list.h"
 
+void display(Node *head)
+{
+    Node *p;
+    p = head;
+    while (p != NULL)
+    {
+        printf(" ->(%d)", p->data);
+        p = p->next;
+    }
+}
+
+int count(Node *head)
+{
+    Node *p;
+    int c = 0;
+
+    p = head;
+    while (p != NULL)
+    {
+        ++c;
+        p = p->next;
+    }
+
+    return c;
+}
+
 /*
 * Create Lined List
 */
@@ -58,31 +84,36 @@ Node *insert_end(Node *head, int x)
     return head;
 }
 
-Node *insert_any(Node* head,int pos,int x)
+Node *insert_anyPos(Node *head, int pos, int x)
 {
-    if(pos==1)
-        head=insert_beg(head,x);
-    else if(pos==(count(head)+2))
-        head=insert_end(head,x);
+    if (pos == 1)
+        head = insert_beg(head, x);
+
+    else if (pos == (count(head) + 1))
+        head = insert_end(head, x);
+
     else
     {
-        Node *q,*t;
-        q=(Node*)malloc(sizeof(Node));
-        q->data=x;
-        q->next=NULL;
-        int c=1;
-        t=head;
-        while(t->next!=NULL)
+        Node *p, *temp;
+
+        p = head;
+        temp = (Node *)malloc(sizeof(Node));
+        temp->data = x;
+        temp->next = NULL;
+
+        int c = 1;
+        while (p->next != NULL)
         {
-            if(c==pos-1)
+            if (c == pos - 1)
             {
-                q->next=t->next;
-                t->next=q;
+                temp->next = p->next;
+                p->next = temp;
             }
             c++;
-            t=t->next;
+            p = p->next;
         }
     }
+
     return head;
 }
 
@@ -90,85 +121,100 @@ Node *insert_any(Node* head,int pos,int x)
 * Delete a Node from Linked List
 */
 
-Node *del_beg(Node* head)
+Node *del_beg(Node *head)
 {
-    Node* p;
-    p=head;
-    if(head==NULL)
-        printf("\nNo Node to delete\n");
+    Node *p;
+
+    p = head;
+    if (p == NULL)
+        printf("\nLinked List is empty. No Node to delete.\n");
     else
-        head=head->next;
-        free(p);
-    return head;
-}
-Node *del_end(Node* head)
-{
-    Node *p,*t;
-    p=head;
-    if(head==NULL)
-        printf("\n No need to delete\n");
-    else if(p->next==NULL)
-    {
-        head=NULL;
-        printf("\nNULL\n");
-        free(p);
-    }
-    else
-    {
-        while(p->next!=NULL)
-        {
-            t=p;
-            p=p->next;
-        }
-    }
-    t->next=NULL;
+        head = head->next;
+    printf("\n%d is Deleted.\n", p->data);
     free(p);
+
     return head;
 }
-Node* del_any(Node* head,int pos)
+
+Node *del_end(Node *head)
 {
-    if(head==NULL)
-        printf("No Node to delete\n");
-    else if(head->next==NULL)
-        head=del_beg(head);
-    else if(pos==count(head))
-        head=del_end(head);
+    Node *p, *q;
+    p = head;
+    if (head == NULL)
+        printf("\n No need to delete\n");
+
+    else if (p->next == NULL)
+    {
+        printf("\n%d is Deleted and there is no other Node to Delete.\n", p->data);
+        free(p);
+        head = NULL;
+    }
+
     else
     {
-        Node *p,*t;
-        int c=1;
-        p=head;
-        while(p->next!=NULL&&c<pos)
+        q = p->next;
+        while (q->next != NULL)
         {
-            t=p;
-            p=p->next;
+            q = q->next;
+            p = p->next;
+        }
+        p->next = NULL;
+        printf("\n%d is Deleted.\n", q->data);
+        free(q);
+    }
+
+    return head;
+}
+
+Node *del_anyPos(Node *head, int pos)
+{
+    if (head == NULL)
+        printf("No Node to delete\n");
+
+    else if (head->next == NULL)
+        head = del_beg(head);
+
+    else if (pos == count(head))
+        head = del_end(head);
+
+    else
+    {
+        Node *p, *q;
+        int c = 1;
+        p = head;
+        while (p->next != NULL && c < pos)
+        {
+            q = p;
+            p = p->next;
             c++;
         }
-        t->next=p->next;
-        free(p);
+
+        if (c == pos - 1)
+        {
+            q->next = p->next;
+            printf("\n%d is Deleted.\n", p->data);
+            free(p);
+        }
+
         return head;
     }
 }
-int count(Node* head)
-{
-    Node *p;
-    int c=0;
-    p=head;
-    while(p->next!=NULL)
-    {
-        ++c;
-        p=p->next;
-    }
-    return c;
-}
 
-void display(Node *head)
+Node *revList(Node *head)
 {
-    Node *p;
-    p=head;
-    while(p!=NULL)
+    Node *prev, *curr, *nx;
+
+    curr = head;
+    prev = NULL;
+    nx = NULL;
+
+    while (curr != NULL)
     {
-        printf("|%d|->",p->data);
-        p=p->next;
+        nx = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nx;
     }
+
+    return prev;
 }
