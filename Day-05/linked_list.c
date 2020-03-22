@@ -1,156 +1,64 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct node
+#include "linked_list.h"
+
+/*
+* Create Lined List
+*/
+
+Node *create(Node *head, int x)
 {
-    int data;
-    struct node *next;
-};
-typedef struct node node;
-node *head=NULL;
-node *create(node*,int);
-node *insert_beg(node*,int);
-node *insert_end(node*,int);
-node *insert_any(node*,int,int);
-node *del_beg(node*);
-node *del_end(node*);
-node *del_any(node*,int);
-int count(node*);
-void display(node*);
-int main()
-{
-    int ch,n,i,d;
-    do{
-    printf("\nEnter 1 to create list\nEnter 2 to insert\nEnter 3 to delete\nEnter 4 to Display\n");
-    scanf("%d",&ch);
-    switch(ch)
-    {
-        case 1:
-            printf("\nEnter the no.of nodes to create\n");
-            scanf("%d",&n);
-            for(i=0;i<n;i++)
-            {
-                printf("\nEnter the value of the  node\n");
-                scanf("%d",&d);
-                head=create(head,d);
-            }
-            break;
-        case 2:
-            printf("\nEnter 1 to insert at beg\nEnter 2 to insert at end\nEnter 3 to insert at any pos\n");
-            int choice,v,pos;
-            printf("\nEnter choice to insert\n");
-            scanf("%d",&choice);
-            switch(choice)
-            {
-                case 1:
-                    printf("\nEnter value to insert\n");
-                    scanf("%d",&v);
-                    head=insert_beg(head,v);
-                    break;
-                case 2:
-                    printf("\nEnter value to insert\n");
-                    scanf("%d",&v);
-                    head=insert_end(head,v);
-                    break;
-                case 3:
-                    printf("\nEnter position to insert\n");
-                    scanf("%d",&pos);
-                    printf("\nEnter value to insert\n");
-                    scanf("%d",&v);
-                    head=insert_any(head,pos,v);
-                    break;
-                default:
-                    printf("\nInvalid choice\n");
-                    break;
-            }
-            break;
-        case 3:
-            printf("\nEnter 1 to delete at beg\nEnter 2 to delete at end\nEnter 3 to delete at any pos\n");
-            int che,p;
-            printf("\nEnter choice to delete\n");
-            scanf("%d",&che);
-            switch(che)
-            {
-                case 1:
-                    head=del_beg(head);
-                    break;
-                case 2:
-                    head=del_end(head);
-                    break;
-                case 3:
-                    printf("\nEnter the position to delete\n");
-                    scanf("%d",&p);
-                    head=del_any(head,p);
-                    break;
-                default:
-                    printf("\nInvalid choice\n");
-                    break;
-            }
-        break;
-        case 4:
-            display(head);
-            break;
-        default:
-            printf("\nInvalid choice\n");
-    }
-    }while(1);
-    /*head=create(head,1);
-    head=create(head,8);
-    head=create(head,3);
-    head=insert_beg(head,9);
-    head=insert_end(head,5);
-    head=insert_any(head,4,4);
-    display(head);
-    printf("\n%d",count(head)+1);
-    printf("\nAfter deletion at beginning\n");
-    head=del_beg(head);
-    display(head);
-    printf("\nAfter deletion at end\n");
-    head=del_end(head);
-    display(head);
-    printf("\nAfter deletion at any pos\n");
-    head=del_any(head,3);
-    display(head);*/
-}
-node *create(node *head, int x)
-{
-    node *q,*p;
-    q=(node*)malloc(sizeof(node));
-    q->data=x;
-    q->next=NULL;
-    if(head==NULL)
-        head=q;
+    Node *p, *temp;
+
+    temp = (Node *)malloc(sizeof(Node));
+    temp->data = x;
+    temp->next = NULL;
+
+    if (head == NULL)
+        head = temp;
     else
     {
-        p=head;
-        while(p->next!=NULL)
-            p=p->next;
-         p->next=q;   
+        p = head;
+        while (p->next != NULL)
+            p = p->next;
+        p->next = temp;
     }
+
     return head;
 }
-node *insert_beg(node* head,int x)
+
+/*
+* Add a Node to Linked List
+*/
+
+Node *insert_beg(Node *head, int x)
 {
-    node *p,*q;
-    q=head;
-    p=(node*)malloc(sizeof(node));
-    p->data=x;
-    head=p;
-    p->next=q;
+    Node *temp;
+
+    temp = (Node *)malloc(sizeof(Node));
+    temp->data = x;
+    temp->next = head;
+
+    head = temp;
+
     return head;
 }
-node *insert_end(node* head,int x)
+
+Node *insert_end(Node *head, int x)
 {
-    node *p,*q;
-    p=(node*)malloc(sizeof(node));
-    p->data=x;
-    p->next=NULL;
-    q=head;
-    while(q->next!=NULL)
-        q=q->next;
-    q->next=p;
+    Node *p, *temp;
+
+    temp = (Node *)malloc(sizeof(Node));
+    temp->data = x;
+    temp->next = NULL;
+
+    p = head;
+    while (p->next != NULL)
+        p = p->next;
+    p->next = temp;
+
     return head;
 }
-node *insert_any(node* head,int pos,int x)
+
+Node *insert_any(Node* head,int pos,int x)
 {
     if(pos==1)
         head=insert_beg(head,x);
@@ -158,8 +66,8 @@ node *insert_any(node* head,int pos,int x)
         head=insert_end(head,x);
     else
     {
-        node *q,*t;
-        q=(node*)malloc(sizeof(node));
+        Node *q,*t;
+        q=(Node*)malloc(sizeof(Node));
         q->data=x;
         q->next=NULL;
         int c=1;
@@ -177,9 +85,14 @@ node *insert_any(node* head,int pos,int x)
     }
     return head;
 }
-node *del_beg(node* head)
+
+/*
+* Delete a Node from Linked List
+*/
+
+Node *del_beg(Node* head)
 {
-    node* p;
+    Node* p;
     p=head;
     if(head==NULL)
         printf("\nNo Node to delete\n");
@@ -188,9 +101,9 @@ node *del_beg(node* head)
         free(p);
     return head;
 }
-node *del_end(node* head)
+Node *del_end(Node* head)
 {
-    node *p,*t;
+    Node *p,*t;
     p=head;
     if(head==NULL)
         printf("\n No need to delete\n");
@@ -212,17 +125,17 @@ node *del_end(node* head)
     free(p);
     return head;
 }
-node* del_any(node* head,int pos)
+Node* del_any(Node* head,int pos)
 {
     if(head==NULL)
-        printf("No node to delete\n");
+        printf("No Node to delete\n");
     else if(head->next==NULL)
         head=del_beg(head);
     else if(pos==count(head))
         head=del_end(head);
     else
     {
-        node *p,*t;
+        Node *p,*t;
         int c=1;
         p=head;
         while(p->next!=NULL&&c<pos)
@@ -236,9 +149,9 @@ node* del_any(node* head,int pos)
         return head;
     }
 }
-int count(node* head)
+int count(Node* head)
 {
-    node *p;
+    Node *p;
     int c=0;
     p=head;
     while(p->next!=NULL)
@@ -249,9 +162,9 @@ int count(node* head)
     return c;
 }
 
-void display(node *head)
+void display(Node *head)
 {
-    node *p;
+    Node *p;
     p=head;
     while(p!=NULL)
     {
