@@ -14,13 +14,15 @@ node *insert_any(node*,int,int);
 node *del_beg(node*);
 node *del_end(node*);
 node *del_any(node*,int);
+node *rev(node*);
 int count(node*);
 void display(node*);
 int main()
 {
     int ch,n,i,d;
+    node *r;
     do{
-    printf("\nEnter 1 to create list\nEnter 2 to insert\nEnter 3 to delete\nEnter 4 to Display\n");
+    printf("\nEnter 1 to create list\nEnter 2 to insert\nEnter 3 to delete\nEnter 4 to Display\nEnter 5 to reverse the list\n");
     scanf("%d",&ch);
     switch(ch)
     {
@@ -88,6 +90,10 @@ int main()
         break;
         case 4:
             display(head);
+            break;
+        case 5:
+            r=rev(head);
+            display(r);
             break;
         default:
             printf("\nInvalid choice\n");
@@ -248,6 +254,24 @@ int count(node* head)
     }
     return c;
 }
+node *rev(node* head)
+{
+    node *p,*c,*g;
+    g=head;
+    p=g;
+    c=g->next;
+    g=g->next;
+    p->next=NULL;
+    while(g!=NULL)
+    {
+        g=g->next;
+        c->next=p;
+        p=c;
+        c=g;
+    }
+    g=p;
+    return g;
+}
 
 void display(node *head)
 {
@@ -257,5 +281,6 @@ void display(node *head)
     {
         printf("|%d|->",p->data);
         p=p->next;
+ 
     }
 }
