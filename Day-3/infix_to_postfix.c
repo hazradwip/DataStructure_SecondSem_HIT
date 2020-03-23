@@ -1,8 +1,10 @@
+//infix to postfix conversion
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
 #include<ctype.h>
 #define SIZE 5
+
 struct stack
 {
     int top;
