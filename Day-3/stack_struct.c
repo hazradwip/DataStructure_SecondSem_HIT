@@ -12,7 +12,6 @@ void push(stck*,int);
 int pop(stck*);
 int isfull(stck*);
 int isemp(stck*);
-
 int main()
 {
     int ch,n,x,flag;
@@ -31,7 +30,7 @@ int main()
                 break;
             case 2:
                 flag=pop(&s);
-                printf("\nThe item popped%d\t",flag);
+                printf("\nThe item popped\t%d",flag);
                 break;
             default:
                 printf("\nInvalid option");
@@ -75,3 +74,5 @@ int pop(stck *s)
         return(s->a[(s->top)--]);
     }
 }
+
+
