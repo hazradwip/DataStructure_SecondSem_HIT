@@ -40,7 +40,6 @@ void display(poly* s,int n)
     {
         if(((s+i)->coeff)<=0)
         {
-            //printf("%dX^%d",((s+i)->coeff),((s+i)->exp));
             if(((s+i)->exp)==1)
                 printf("-%dX",abs(((s+i)->coeff)));
             else if(((s+i)->exp)==0)
