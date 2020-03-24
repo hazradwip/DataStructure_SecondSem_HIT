@@ -1,0 +1,8 @@
+Stack Basic operation :
+    gcc -o main main_stack.c stack.c
+
+Infix to Postfix :
+    gcc -o main infix_to_postfix.c stack.c
+
+Postfix Evaluation :
+    gcc -o main postfix_evaluation.c stack.c
