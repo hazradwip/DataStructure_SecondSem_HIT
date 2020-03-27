@@ -13,7 +13,10 @@ int main()
         printf("2. Insert\n");
         printf("3. Delete\n");
         printf("4. Display\n");
-        printf("5. Reverse the List\n");
+        //printf("5. Search an Element\n");
+        //printf("6. Insert after an Element\n");
+        //printf("7. Insert after an Element\n");
+        printf("8. Reverse the List\n");
         printf("Choose an Option : ");
         scanf("%d", &ch);
         switch (ch)
@@ -93,7 +96,7 @@ int main()
         case 4:
             display(head);
             break;
-        case 5:
+        case 8:
             head = revList(head);
             display(head);
             break;

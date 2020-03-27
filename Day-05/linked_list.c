@@ -189,7 +189,7 @@ Node *del_anyPos(Node *head, int pos)
             c++;
         }
 
-        if (c == pos - 1)
+        if (c == pos)
         {
             q->next = p->next;
             printf("\n%d is Deleted.\n", p->data);
