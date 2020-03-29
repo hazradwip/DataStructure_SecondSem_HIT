@@ -115,6 +115,7 @@ Node *insert_anyPos(Node *head, int pos, int x)
                 temp->next = p->next;
                 p->next = temp;
                 temp->prev = p;
+                temp->next->prev = temp;
             }
             c++;
             p = p->next;
@@ -191,7 +192,7 @@ Node *del_anyPos(Node *head, int pos)
 
     else
     {
-        Node *p, *q, *temp;
+        Node *p, *q;
         int c = 1;
         p = head;
         while (p->next != NULL && c < pos)
