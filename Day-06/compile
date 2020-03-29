@@ -1,0 +1,2 @@
+Doubly Linked List
+    gcc -o main main_doubly.c doubly_linked_list.c
