@@ -68,3 +68,31 @@ Node *concate(Node *list1, Node *list2)
     }
     return list1;
 }
+
+
+
+/*
+================ OUTPUT ================
+Create 1st Linked List
+
+Enter the no.of Nodes : 3
+
+Enter the value of the  Node :
+20
+
+Enter the value of the  Node :
+10
+
+Enter the value of the  Node :
+30
+
+Create 2nd Linked List :
+Enter the no.of Nodes : 2
+
+Enter the value of the  Node : 15
+
+Enter the value of the  Node : 25
+ ->(20) ->(10) ->(30)
+ ->(15) ->(25)
+ ->(20) ->(10) ->(30) ->(15) ->(25)
+*/

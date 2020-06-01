@@ -1,0 +1,8 @@
+Shell Sort
+    gcc -o main shell_sort.c 
+    
+Radix Sort
+    gcc -o main radix_sort.c
+
+Heap Sort
+    gcc -o main heap_sort.c

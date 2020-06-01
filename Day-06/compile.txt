@@ -1,0 +1,5 @@
+Circular Linked List
+    gcc -o main main_circular.c circular_linked_list.c
+    
+Doubly Linked List
+    gcc -o main main_doubly.c doubly_linked_list.c
