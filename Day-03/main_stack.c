@@ -45,3 +45,72 @@ int main()
 
     return 0;
 }
+
+/*
+================ OUTPUT ================
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 2
+
+Stack is Underflow
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 1
+
+Enter the element to push : 20
+
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 1
+
+Enter the element to push : 50
+
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 1
+
+Enter the element to push : 40
+
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 3
+
+The Peek item is : 40
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 2
+
+40 Popped.
+Do you want to continue? (y/n) : y
+
+------MENU------
+1. PUSH
+2. POP
+3. PEEK
+Enter Choice : 3
+
+The Peek item is : 50
+Do you want to continue? (y/n) : n
+*/

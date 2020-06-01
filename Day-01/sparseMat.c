@@ -108,3 +108,52 @@ void createSparse(int **orgMat, int row, int col, int N)
     display(sparseMat, N + 1, 3);
     createSpareseTranspose(sparseMat, N + 1);
 }
+
+
+/*
+================ OUTPUT ================
+******* All the inputs are taking by Random Function written in matrix.c *******
+
+SET - 1
+--------
+Enter No. of Rows : 5
+
+Enter No. of Columns : 4
+
+The Matrix is :
+ 1  1  0  1
+ 0  2  0  0
+ 0  0  0  0 
+ 0  0  0  2
+ 0  0  2  0
+
+It is not a sparse matrix
+
+--------
+SET - 2
+--------
+Enter No. of Rows : 5 
+
+Enter No. of Columns : 4
+
+The Matrix is :
+ 0  0  4  0
+ 0  0  0  0
+ 0  0  0  0
+ 0  5  0  0
+ 0  0  0  0 
+
+It is a sparse matrix
+
+The Matrix is :
+ 5  4  2
+ 0  2  4
+ 3  1  5
+
+The Transpose of the Matrix is :
+
+The Matrix is :
+ 4  5  2
+ 1  3  5
+ 2  0  4
+*/

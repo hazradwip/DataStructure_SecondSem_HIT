@@ -164,3 +164,64 @@ int *sort(int *arr, int n)
 
     return arr;
 }
+
+
+/*
+================ OUTPUT ================
+******* All the inputs are taking by Random Function *******
+
+SET - 1
+--------
+Enter the size of array 10
+Creation of list done        
+-----------------------------
+The entered list is:
+3       3       2       0       4       9       4       0       1       0
+Enter element to search 4
+
+----- MENU -----
+1. Linear Search
+2. Sentinel Linear Search
+3. Binary Search
+Enter choice :
+1
+Item found at locations 5       7
+
+--------
+SET - 2
+--------
+Enter the size of array 8
+Creation of list done
+-----------------------------
+The entered list is:
+5       5       8       2       8       8       4       9       
+Enter element to search 9
+
+----- MENU -----
+1. Linear Search
+2. Sentinel Linear Search
+3. Binary Search
+Enter choice :
+2
+Item found at locations 8
+
+--------
+SET - 3
+--------
+Enter the size of array 9
+Creation of list done
+-----------------------------
+The entered list is:
+5       4       8       7       3       0       9       9       3
+Enter element to search 8
+
+----- MENU -----
+1. Linear Search
+2. Sentinel Linear Search
+3. Binary Search
+Enter choice :
+3
+The sorted list
+0       3       3       4       5       7       8       9       9
+Item found at location in the sorted list       7
+*/

@@ -81,3 +81,30 @@ void add(poly *p1, poly *p2, int n1, int n2)
     printf("\nThe added polynomial is\n");
     display(sum, i);
 }
+
+/*
+================ OUTPUT ================
+
+SET - 1
+--------
+Enter the polynomials : 
+Enter the no.of terms of 1st polynomial : 2
+Enter the 1st polynomial
+Enter the Exponent : 4
+Enter the Co-efficient : 5
+Enter the Exponent : 2
+Enter the Co-efficient : 4
+ +5x^4 +4x^2
+Enter the no.of terms of 2nd polynomial : 3
+
+Enter the 2nd polynomial
+Enter the Exponent : 4
+Enter the Co-efficient : 5
+Enter the Exponent : 1
+Enter the Co-efficient : 5
+Enter the Exponent : 2
+Enter the Co-efficient : 6
+ +5x^4 +6x^2 +5x
+The added polynomial is
+ +10x^4 +10x^2 +5x
+*/

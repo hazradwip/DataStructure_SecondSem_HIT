@@ -4,25 +4,16 @@
 #include <string.h>
 
 /* symbol types */
+/* symbol types */
 #define Operator (-10)
 #define Operand (-20)
 #define LeftParen (-30)
 #define RightParen (-40)
-static char *symbols = "()+-%*/";
+static char *symbols = "()^+-%*/";
 
-/* Symbol precedence */
-#define LeftParenPrec 0 /* ( */
-#define AddPrec 1       /* + */
-#define SubPrec 1       /* - */
-#define MultPrec 2      /* * */
-#define DivPrec 2       /* / */
-#define RemPrec 2       /* % */
-#define None 999        /* all else */
 
 char infix[SIZE + 1], postfix[SIZE + 1];
 
-void getdata();
-void display();
 void IntoPost(stack *);
 int get_type(char);
 int get_prec(char);
@@ -31,23 +22,15 @@ int main()
 {
     stack S = {-1,};
 
-    getdata();
-    IntoPost(&S);
-    display();
-
-    return 0;
-}
-
-void getdata()
-{
     printf("\n Infix (up to '%d' chars): ",SIZE);
     gets(infix);
-}
 
-void display()
-{
+    IntoPost(&S);
+
     printf("\n Infix: %s", infix);
     printf("\n Postfix: %s", postfix);
+
+    return 0;
 }
 
 void IntoPost(stack *sp)
@@ -78,7 +61,7 @@ void IntoPost(stack *sp)
                 break;
             case Operator:
                 precedence = get_prec(infix[i]);
-                while (sp->top > -1 && precedence <= get_prec(sp->arr[sp->top]))
+                while (sp->top > -1 && precedence <= get_prec(peek(sp)))
                     postfix[p++] = pop(sp);
                 push(sp, infix[i]);
                 break;
@@ -104,6 +87,7 @@ int get_type(char symbol)
     case '%':
     case '*':
     case '/':
+    case '^':
         return (Operator);
     default:
         return (Operand);
@@ -115,18 +99,30 @@ int get_prec(char symbol)
     switch (symbol)
     {
     case '+':
-        return (AddPrec);
+        return 1;
     case '-':
-        return (SubPrec);
+        return 1;
     case '*':
-        return (MultPrec);
+        return 2;
     case '/':
-        return (DivPrec);
+        return 3;
     case '%':
-        return (RemPrec);
+        return 3;
+    case '^':
+        return 4;
     case '(':
-        return (LeftParenPrec);
+        return 0;
     default:
-        return (None);
+        return 999;
     }
 }
+
+/*
+================ OUTPUT ================
+******* Stack size is define 10 at stack.h *******
+
+ Infix (up to '10' chars): A+B*(C-D) 
+
+ Infix: A+B*(C-D)
+ Postfix: ABCD-*+
+*/

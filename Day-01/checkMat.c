@@ -251,3 +251,51 @@ int isRightTriDiagonal(int **mat, int dim)
 
     return flag;
 }
+
+
+/*
+================ OUTPUT ================
+******* All the inputs are taking by Random Function written in matrix.c *******
+
+SET - 1
+--------
+Enter the Dimention for the Matrix: 5
+
+----- What type of Matrix you want to Input -----
+1. Lower Triangular
+2. Upper Triangular
+3. Diagonal
+4. Identity
+5. Tri-Diagonal
+Enter you choise : 1
+
+The Matrix is :
+ 0  0  0  0  9
+ 0  0  0  0  0
+ 0  0  9  5  4
+ 0  2  8  5  0
+ 1  7  2  3  5
+
+The Matrix is Lower Triangular Matrix
+
+--------
+SET - 2
+--------
+Enter the Dimention for the Matrix: 4
+
+----- What type of Matrix you want to Input -----
+1. Lower Triangular
+2. Upper Triangular
+3. Diagonal
+4. Identity
+5. Tri-Diagonal
+Enter you choise : 5
+
+The Matrix is :
+ 0  0  8  2
+ 0  0  6  3
+ 0  9  6  0
+ 0  4  0  0
+
+The Matrix is Tri-Diagonal Triangular Matrix
+*/
