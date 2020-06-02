@@ -1,0 +1,8 @@
+Linear Queue:
+    gcc -o main main_queue.c queue.c
+
+Circular Queue:
+    gcc -o main main_circular_queue.c circular_queue.c
+
+Double Ended Queue:
+    gcc -o main main_dequeue.c dequeue.c
