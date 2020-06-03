@@ -1,0 +1,8 @@
+Stack using Linked List
+    gcc -o main main_stack.c stack.c
+
+Queue using Linked List
+    gcc -o main main_queue.c queue.c
+
+DeQueue using Linked List
+    gcc -o main main_dequeue.c dequeue.c

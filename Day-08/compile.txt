@@ -1,0 +1,5 @@
+GCD using Recursion
+    gcc -o main gcd_recursion.c
+
+Binary Search using Recursion
+    gcc -o main binary_search.c
