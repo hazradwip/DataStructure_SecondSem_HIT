@@ -1,14 +1,16 @@
-#include "linked_list.h"
+#include "circular_linked_list.h"
 
 void display(Node *head)
 {
     Node *p;
     p = head;
-    while (p != NULL)
+    while (p->next != head);
     {
         printf(" ->(%d)", p->data);
         p = p->next;
     }
+
+    printf(" ->(%d) -> | ->(%d)", p->data,p->next->data);
 }
 
 int count(Node *head)
@@ -39,13 +41,17 @@ Node *create(Node *head, int x)
     temp->next = NULL;
 
     if (head == NULL)
+    {
         head = temp;
+        head->next = head;
+    }
     else
     {
         p = head;
-        while (p->next != NULL)
+        while (p->next != head)
             p = p->next;
         p->next = temp;
+        temp->next = head;
     }
 
     return head;
@@ -57,9 +63,15 @@ Node *create(Node *head, int x)
 
 Node *insert_beg(Node *head, int x)
 {
-    Node *temp;
+    Node *temp, *p;
 
     temp = (Node *)malloc(sizeof(Node));
+    
+    p = head;
+    while (p->next != head)
+        p = p->next;
+    p->next = temp;
+
     temp->data = x;
     temp->next = head;
 
@@ -77,9 +89,10 @@ Node *insert_end(Node *head, int x)
     temp->next = NULL;
 
     p = head;
-    while (p->next != NULL)
+    while (p->next != head)
         p = p->next;
     p->next = temp;
+    temp->next = head;
 
     return head;
 }
@@ -102,7 +115,7 @@ Node *insert_anyPos(Node *head, int pos, int x)
         temp->next = NULL;
 
         int c = 1;
-        while (p->next != NULL)
+        while (p->next != head)
         {
             if (c == pos - 1)
             {
@@ -125,11 +138,18 @@ Node *del_beg(Node *head)
 {
     Node *p;
 
-    p = head;
     if (p == NULL)
         printf("\nLinked List is empty. No Node to delete.\n");
     else
+    {
+        while (p->next != head)
+            p = p->next;
+        p->next = head->next;
+
+        p = head;
+
         head = head->next;
+    }
     printf("\n%d is Deleted.\n", p->data);
     free(p);
 
@@ -143,7 +163,7 @@ Node *del_end(Node *head)
     if (head == NULL)
         printf("\n No need to delete\n");
 
-    else if (p->next == NULL)
+    else if (p->next == head)
     {
         printf("\n%d is Deleted and there is no other Node to Delete.\n", p->data);
         free(p);
@@ -153,12 +173,12 @@ Node *del_end(Node *head)
     else
     {
         q = p->next;
-        while (q->next != NULL)
+        while (q->next != head)
         {
             q = q->next;
             p = p->next;
         }
-        p->next = NULL;
+        p->next = head;
         printf("\n%d is Deleted.\n", q->data);
         free(q);
     }
@@ -171,7 +191,7 @@ Node *del_anyPos(Node *head, int pos)
     if (head == NULL)
         printf("No Node to delete\n");
 
-    else if (head->next == NULL)
+    else if (head->next == head)
         head = del_beg(head);
 
     else if (pos == count(head))
@@ -182,7 +202,7 @@ Node *del_anyPos(Node *head, int pos)
         Node *p, *q;
         int c = 1;
         p = head;
-        while (p->next != NULL && c < pos)
+        while (p->next != head && c < pos)
         {
             q = p;
             p = p->next;
@@ -200,21 +220,3 @@ Node *del_anyPos(Node *head, int pos)
     }
 }
 
-Node *revList(Node *head)
-{
-    Node *prev, *curr, *nx;
-
-    curr = head;
-    prev = NULL;
-    nx = NULL;
-
-    while (curr != NULL)
-    {
-        nx = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = nx;
-    }
-
-    return prev;
-}

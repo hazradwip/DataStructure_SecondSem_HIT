@@ -69,3 +69,12 @@ void postEval(char postfix[], stack *sp)
     
     printf("\nResult of postfix is : %d", pop(sp));
 }
+
+/*
+================ OUTPUT ================
+******* Stack size is define 10 at stack.h *******
+
+Enter the postfix postfixression (separate the Oparands using spaces) : 25 45 + 5 / 2 *
+
+Result of postfix is : 28
+*/

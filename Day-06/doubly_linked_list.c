@@ -1,4 +1,4 @@
-#include "linked_list.h"
+#include "doubly_linked_list.h"
 
 void display(Node *head)
 {
@@ -6,7 +6,7 @@ void display(Node *head)
     p = head;
     while (p != NULL)
     {
-        printf(" ->(%d)", p->data);
+        printf(" <->(%d)", p->data);
         p = p->next;
     }
 }
@@ -27,7 +27,7 @@ int count(Node *head)
 }
 
 /*
-* Create Lined List
+* Create Linked List
 */
 
 Node *create(Node *head, int x)
@@ -36,6 +36,7 @@ Node *create(Node *head, int x)
 
     temp = (Node *)malloc(sizeof(Node));
     temp->data = x;
+    temp->prev = NULL;
     temp->next = NULL;
 
     if (head == NULL)
@@ -46,6 +47,7 @@ Node *create(Node *head, int x)
         while (p->next != NULL)
             p = p->next;
         p->next = temp;
+        temp->prev = p;
     }
 
     return head;
@@ -61,6 +63,7 @@ Node *insert_beg(Node *head, int x)
 
     temp = (Node *)malloc(sizeof(Node));
     temp->data = x;
+    temp->prev = NULL;
     temp->next = head;
 
     head = temp;
@@ -74,12 +77,14 @@ Node *insert_end(Node *head, int x)
 
     temp = (Node *)malloc(sizeof(Node));
     temp->data = x;
+    temp->prev = NULL;
     temp->next = NULL;
 
     p = head;
     while (p->next != NULL)
         p = p->next;
     p->next = temp;
+    temp->prev = p;
 
     return head;
 }
@@ -99,6 +104,7 @@ Node *insert_anyPos(Node *head, int pos, int x)
         p = head;
         temp = (Node *)malloc(sizeof(Node));
         temp->data = x;
+        temp->prev = NULL;
         temp->next = NULL;
 
         int c = 1;
@@ -108,6 +114,8 @@ Node *insert_anyPos(Node *head, int pos, int x)
             {
                 temp->next = p->next;
                 p->next = temp;
+                temp->prev = p;
+                temp->next->prev = temp;
             }
             c++;
             p = p->next;
@@ -129,7 +137,10 @@ Node *del_beg(Node *head)
     if (p == NULL)
         printf("\nLinked List is empty. No Node to delete.\n");
     else
+    {
         head = head->next;
+        head->prev = NULL;
+    }
     printf("\n%d is Deleted.\n", p->data);
     free(p);
 
@@ -152,12 +163,14 @@ Node *del_end(Node *head)
 
     else
     {
-        q = p->next;
-        while (q->next != NULL)
+        //q = p->next;
+        while (p->next != NULL)
         {
-            q = q->next;
+            //q = q->next;
             p = p->next;
         }
+        q = p;
+        p = p->prev;
         p->next = NULL;
         printf("\n%d is Deleted.\n", q->data);
         free(q);
@@ -192,29 +205,11 @@ Node *del_anyPos(Node *head, int pos)
         if (c == pos)
         {
             q->next = p->next;
+            p->next->prev = q;
             printf("\n%d is Deleted.\n", p->data);
             free(p);
         }
 
         return head;
     }
-}
-
-Node *revList(Node *head)
-{
-    Node *prev, *curr, *nx;
-
-    curr = head;
-    prev = NULL;
-    nx = NULL;
-
-    while (curr != NULL)
-    {
-        nx = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = nx;
-    }
-
-    return prev;
 }

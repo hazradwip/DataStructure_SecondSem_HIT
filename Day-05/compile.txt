@@ -1,0 +1,6 @@
+Problem a to h :
+    gcc -o main main.c linked_list.c
+
+Concate two list :
+    gcc -o main concate.c linked_list.c
+

@@ -1,4 +1,4 @@
-#include "linked_list.h"
+#include "circular_linked_list.h"
 
 int main()
 {
@@ -13,10 +13,6 @@ int main()
         printf("2. Insert\n");
         printf("3. Delete\n");
         printf("4. Display\n");
-        //printf("5. Search an Element\n");
-        //printf("6. Insert after an Element\n");
-        //printf("7. Insert after an Element\n");
-        printf("8. Reverse the List\n");
         printf("Choose an Option : ");
         scanf("%d", &ch);
         switch (ch)
@@ -96,10 +92,6 @@ int main()
         case 4:
             display(head);
             break;
-        case 8:
-            head = revList(head);
-            display(head);
-            break;
         default:
             printf("\nInvalid choice\n");
         }
@@ -109,174 +101,8 @@ int main()
 }
 
 
-
 /*
 ================ OUTPUT ================
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 1
-
-Enter the no.of Nodes to create
-2
-
-Enter the value of the  Node :
-20
-
-Enter the value of the  Node :
-30
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 4
- ->(20) ->(30)
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 2
-
-1. Insert at Beginning
-2. Insert at End
-3. Insert at any Position
-Enter choice : 1
-
-Enter value : 10
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 2
-
-1. Insert at Beginning
-2. Insert at End
-3. Insert at any Position
-Enter choice : 2
-
-Enter value : 40
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 2
-
-1. Insert at Beginning
-2. Insert at End
-3. Insert at any Position
-Enter choice : 3
-
-Enter position to insert : 4
-
-Enter value : 35
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 4
- ->(10) ->(20) ->(30) ->(35) ->(40)
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 3
-
-1. Delete Beginning
-2. Delete from End
-3. Delete from any Position
-
-Enter choice : 1
-
-10 is Deleted.
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 3
-
-1. Delete Beginning
-2. Delete from End
-3. Delete from any Position
-
-Enter choice : 2
-
-40 is Deleted.
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 3
-
-1. Delete Beginning
-2. Delete from End
-3. Delete from any Position
-
-Enter choice : 3
-
-Enter the position to delete : 2
-
-30 is Deleted.
-
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 4
- ->(20) ->(35)
-Do you want to continue ? (y/n) : y
-
--------MENU-------
-1. Create List
-2. Insert
-3. Delete
-4. Display
-8. Reverse the List
-Choose an Option : 8
- ->(35) ->(20)
-Do you want to continue ? (y/n) : n
+Not Working
+Whenever I try to compile the program, the file is get deleted.
 */

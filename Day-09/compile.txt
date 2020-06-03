@@ -1,0 +1,11 @@
+Selection Sort
+    gcc -o main selection_sort.c
+    
+Insertion Sort
+    gcc -o main insertion_sort.c
+
+Merge Sort
+    gcc -o main merge_sort.c
+
+Quick Sort
+    gcc -o main quick_sort.c 

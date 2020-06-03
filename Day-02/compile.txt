@@ -1,0 +1,7 @@
+problem 1 :
+    gcc -o main searching.c 
+
+problem 2 :
+    gcc -o main polyRepresentation.c polynomial.c
+
+    gcc -o main addPoly.c polynomial.c
