@@ -1,0 +1,2 @@
+Problem 1:
+    gcc -o main main_bst.c binary_search_tree.c
